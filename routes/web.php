@@ -16,20 +16,20 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-// Route::get('/posts', [PostController::class, 'index']);
-// Route::get('/posts/create', [PostController::class, 'create']);
-// Route::put('/posts/{post}', [PostController::class, 'update']);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/create', [PostController::class, 'create']);
+Route::put('/posts/{post}', [PostController::class, 'update']);
 // Route::post('/posts', [PostController::class, 'store']);
-// Route::get('/posts/{post}', [PostController::class, 'show']);
-// Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
-// Route::delete('/posts/{post}', [PostController::class, 'destroy']);
+Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
 Auth::routes();
-Route::resource('posts', PostController::class)->middleware('auth');
+// Route::resource('posts', PostController::class)->middleware('auth');
 
-Route::get('/', function () {
-    return ('<a href="localhost:8000/posts" >Go to posts</a>');
-});
+// Route::get('/', function () {
+//     return ('<a href="localhost:8000/posts" >Go to posts</a>');
+// });
 
 
 Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
