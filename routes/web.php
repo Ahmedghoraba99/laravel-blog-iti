@@ -25,7 +25,7 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
 Auth::routes();
-// Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('posts', PostController::class)->middleware('auth');
 
 // Route::get('/', function () {
 //     return ('<a href="localhost:8000/posts" >Go to posts</a>');
