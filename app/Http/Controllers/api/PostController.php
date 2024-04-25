@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 // use App\Http\Resources\PostResource;
 use App\Http\Requests\NewPostRequest;
-// use App\Http\Requests\UpdatePostRequest;
+use App\Http\Resources\PostResource;
 
 // use App\Http\Controllers\PostController;
 class PostController extends Controller
 {
     function index()
     {
-        return Post::all();
+        $posts = Post::all();
+        return PostResource::collection($posts);
+        // return Post::all();
     }
 
     function show($id)
@@ -22,7 +24,7 @@ class PostController extends Controller
         if (!$post = Post::find($id)) {
             return response()->json(['message' => 'Post not found'], 404);
         }
-        return $post->find($id);
+        return new PostResource($post);
     }
 
     function store(NewPostRequest $request)
